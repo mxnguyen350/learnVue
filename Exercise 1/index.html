@@ -1,0 +1,41 @@
+<script src="../practice/vue.js"></script>
+
+<div id="exercise">
+   <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
+    <p v-once>VueJS is pretty cool - {{ name }} ({{ age }})</p>
+    <!-- 2) Output your age, multiplied by 3 -->
+    <p>Triple your age is {{ multiplyByThree() }}</p>
+    <!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) -->
+    <p>{{ randomNumber() }}</p>
+    <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
+    <div>
+        <img style="width:100px;height:100px" v-bind:src="link">
+    </div>
+    <!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
+    <div>
+        <input type="text" v-on:input="changeName()">
+        <p>{{ name }}</p>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: "#exercise",
+        data: {
+            name: "Michael Nguyen",
+            age: 21,
+            link: "https://static.politico.com/dims4/default/e993180/2147483647/resize/1160x/quality/90/?url=https%3A%2F%2Fstatic.politico.com%2F31%2Ff8%2F6ce215a146a2bf10195b1af76caf%2F181228-donald-trump-gty-773.jpg"
+        },
+        methods: {
+            multiplyByThree: function() {
+                return this.age * 3
+            },
+            randomNumber: function() {
+                return Math.floor(Math.random() * 100);
+            },
+            changeName: function() {
+                this.name = event.target.value;
+            }
+        }
+    })
+</script>

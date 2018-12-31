@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <script src="vue.js"></script>
+    <title>Countet Vue</title>
+</head>
+
+<div id="app">
+    <!-- $event allow you to pass in the event without changing it into a function -->
+    <button v-on:click="increase(2, $event)">Click Me</button>
+    <!-- You can add simple javascript code to vue sections -->
+    <button v-on:click="counter++">Click Me</button>
+    <p>{{ counter * 2 > 10 ? 'Greater than 10' : 'Smaller than 10' }}</p>
+    <p v-on:mousemove="updateCoordinates">
+        Coordinates: {{ x }} / {{ y }}
+        - <span v-on:mousemove.stop="">DEAD SPOT</span>
+    </p>
+    <input type="text" v-on:keyup.enter="alertMe">
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+            increase: function(j, event) {
+                this.counter += j;
+            },
+            updateCoordinates: function(event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            alertMe: function() {
+                alert('Alert!');
+            }
+        }
+    });
+</script>
