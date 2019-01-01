@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <script src="vue.js"></script>
+    <title>TwoWayBingingPractice</title>
+</head>
+
+<div id="app">
+    <!-- v-model is a two way reflection, that will update vue and the property at the same time -->
+    <input type="text" v-model="name">
+    <p>{{ name }}</p>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            name: 'Michael'
+        }
+    })
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <script src="vue.js"></script>
+    <title>Countet Vue</title>
+</head>
+
+<div id="app">
+    <!-- $event allow you to pass in the event without changing it into a function -->
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <buttin v-on:click="secondCounter++">Increase Second</buttin>
+    <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+    <p>Result: {{ result() }} | {{ output }}</p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            secondCounter: 0
+        },
+        // The code below will only run if counter is effected, not when secondCounter changes. The function will execute every time
+        computed: {
+            output: function() {
+                console.log('Computed')
+                return this.counter > 5 ? 'Greater than 5' : 'Less thanor equal to 5'
+            }
+        },
+        //watch executes any time the property specified changes. Used for asyncronous tasks.
+        watch: {
+            counter: function(value) {
+                var i = this;
+                setTimeout(function() {
+                    i.counter = 0;
+                }, 2000)
+            }
+        },
+        methods: {
+            result() {
+                console.log('Method')
+                return this.counter > 5 ? 'Greater than 5' : 'Less than or equal to 5'
+            }
+        }
+    });
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<script src="../practice/vue.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<div id="app">
+    <div 
+        class="demo"
+        :style="{'background-color': color}"
+    ></div>
+    <div
+        class="demo"
+        :style="myStyle"
+    ></div>
+    <div 
+        class="demo"
+        :style="[myStyle, {height: width + 'px'}]"
+    ></div>
+    <hr>
+    <h1>input color here</h1>
+    <input type="text" v-model = "color">
+    <h1>input width here</h1>
+    <input type="text" v-model = "width">
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            color: 'gray',
+            width: 100
+        },
+        computed: {
+            myStyle: function() {
+                return {
+                    backgroundColor: this.color,
+                    width: this.width + 'px'
+                }
+            }
+        }
+    })
+</script>
