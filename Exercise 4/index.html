@@ -1,0 +1,72 @@
+<script src="https://npmcdn.com/vue/dist/vue.js"></script>
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+<div id="exercise">
+  <!-- 1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below) -->
+  <div>
+    <button @click="startEffect">Start Effect</button>
+    <div id="effect" :class="{highlight: isHighlight, shrink: !isHighlight}"></div>
+  </div>
+  <!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
+  <div :style="syStyle">I got no class :(</div>
+  <!-- 3) Let the user enter a class (create some example classes) and attach it -->
+  <div>
+    <input type="text" v-model="myClass">
+    <div :class="myClass">Type in a class above to change how I look (try 'classOne' and 'classTwo')</div>
+  </div>
+  <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
+  <div>
+    <input type="text" v-model="myClass2">
+    <input type="text" v-model="isTrue">
+    <div :class="[{bright: isTrue}, myClass2]">input a class name ans true or false to change the style fo this text</div>
+  </div>
+  <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
+  <div>
+    <input type="text" v-model="styleChange">
+    <div :style="{backgroundColor: styleChange}">Input a color to change the background color</div>
+  </div>
+  <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
+  <div>
+    <button @click="startProgress">Start Progress</button>
+    <div class="progressBar" :style="{width: progressWidth + 'px'}"> </div>
+  </div>
+</div>
+
+<script>
+  new Vue({
+    el: '#exercise',
+    data: {
+      isHighlight: false,
+      progressWidth: 0,
+      myClass: 'default',
+      myClass2: 'default',
+      isTrue: true,
+      styleChange: ""
+    },
+    computed: {
+      syStyle: function () {
+        return {
+          backgroundColor: 'pink',
+          width: 150,
+          height: 20
+        }
+      }
+    },
+    methods: {
+      startEffect: function () {
+        let i = this;
+        setInterval(function () {
+          return i.isHighlight = !i.isHighlight
+        }, 500)
+      },
+      startProgress: function () {
+        let j = this;
+        setInterval(function () {
+          if (j.progressWidth < 500) {
+            return j.progressWidth += 20
+          }
+        }, 200)
+      }
+    }
+  });
+</script>

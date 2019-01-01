@@ -1,0 +1,40 @@
+#effect {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.highlight {
+  background-color: red;
+  width: 200px !important;
+}
+
+.bright {
+  background-color: palevioletred;
+}
+
+.shrink {
+  background-color: gray;
+  width: 50px !important;
+}
+
+.default {
+  background-color: darkgreen;
+  width: 150px !important;
+}
+
+.classOne {
+  background-color: skyblue;
+  width: 150px !important;
+}
+
+.classTwo {
+  background-color: violet;
+  width: 100px !important;
+}
+
+.progressBar {
+  background-color: black;
+  width: 0px;
+  height: 50px;
+}
