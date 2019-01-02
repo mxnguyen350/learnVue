@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<script src="../practice/vue.js"></script>
+
+<div id="app">
+    <!-- v-if attaches and etaches elements (not just hiding them) -->
+    <p v-if="show">You can see me!</p>
+    <p v-else>Now you see me!</p>
+    <template v-if="show">
+        <h1>Heading</h1>
+        <p>inside a template</p>
+    </template>
+    <!-- v-show does not detach and element, nut it hides it -->
+    <p v-show="show">Do you also see me?</p>
+    <button @click="show = !show">Show or Hide</button>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            show: true
+        }
+    })
+</script>

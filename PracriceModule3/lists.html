@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<script src="../practice/vue.js"></script>
+
+<div id="app">
+    <ul>
+        <!-- The order inside of the parenthesis is important. It is (value, index) -->
+        <!-- the :key stores the value of the element along with it's posistion when something is pushed to the array -->
+        <li v-for="(ingredient, i) in ingredients" :key="ingredient">{{ ingredient }} ({{ i }})</li>
+    </ul>
+    <button @click="ingredient.push('spices')">Add New</button>
+    <hr>
+    <ul>
+        <li v-for="person in persons">
+            <div v-for="(value, key, index) in person">{{ key }}: {{ value }} ({{ index }})</div>
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        <span v-for="n in 10">{{ n }}</span>
+    </ul>
+    <hr>
+    <template v-for="(ingredient, index) in ingredients">
+        <h1>{{ ingredient }}</h1>
+        <p>{{ index }}</p>
+    </template>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            ingredients: [
+                'meat',
+                'fruit',
+                'cookies'
+            ],
+            persons: [
+                {
+                    name: 'Max',
+                    age: 27,
+                    color: 'red'
+                },
+                {
+                    name: 'Anna',
+                    age: 'unknown',
+                    color: 'blue'
+                }
+            ]
+        }
+    })
+</script>
