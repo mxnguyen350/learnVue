@@ -46,8 +46,9 @@
     <section class="row log">
         <div class="small-12 columns">
             <ul>
-                <li>
-
+                <li v-for="(action, i) in attackLog">
+                    <div class="monster-turn" v-if="i%2 == 0">{{ action }}</div>
+                    <div class="player-turn" v-else>{{ action }}</div>
                 </li>
             </ul>
         </div>
