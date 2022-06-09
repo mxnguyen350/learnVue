@@ -43,7 +43,7 @@ new Vue({
                 }
             }
             
-            //damage yourself
+            //damage yourself 
             this.monsterDamageDelt = (Math.floor(Math.random() * 18) + 2);
             this.playerHealth = this.playerHealth - this.monsterDamageDelt;
             this.attackLog.unshift(`The player took ${this.monsterDamageDelt} damage`);
